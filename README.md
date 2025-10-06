@@ -28,3 +28,10 @@ Este conjunto de scripts permite mover un objeto en Unity a distintas posiciones
 El script **Marcador** funciona como un contenedor de tres **Vector3** llamados desplazamiento1, desplazamiento2 y desplazamiento3, que representan diferentes posiciones relativas respecto a la original. 
 
 Por otro lado, el script Movermarcador hace referencia a este Marcador y utiliza una variable indice para elegir cuál de los tres desplazamientos aplicar. Al iniciar el juego, se guarda la posición original del objeto, y en cada actualización **(Update())** se detecta si la tecla espacio está presionada usando **Input.GetKey()**. Si lo está, el objeto se mueve sumando a su posición original el desplazamiento correspondiente según el índice. En cambio, si se suelta la tecla, el objeto regresa automáticamente a su posición inicial.
+
+**Movimiento con flechas con el Cubo**
+
+Lo que hace es detectar la presión de las flechas del teclado y calcular la velocidad del objeto en Unity en función de esas teclas. Primero definimos una variable pública velocidad que nos permite ajustar desde el inspector qué tan rápido se mueve el objeto.
+Dentro del método **Update()**, obtenemos los valores de los ejes de movimiento usando **Input.GetAxisRaw("Vertical")** y **Input.GetAxisRaw("Horizontal")**. Estos valores devuelven -1, 0 o 1 dependiendo de si se presiona la flecha correspondiente, y nos permiten calcular el desplazamiento del objeto sin suavizado.
+
+Después, comprobamos si se presionan las teclas específicas de flecha con **Input.GetKeyDown()**. Si se presiona la flecha arriba o abajo, multiplicamos velocidad por el eje vertical (ejeVertical) y mostramos el resultado en la consola. Si se presiona la flecha izquierda o derecha, hacemos lo mismo pero usando el eje horizontal (ejeHorizontal).
