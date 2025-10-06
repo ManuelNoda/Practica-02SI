@@ -16,4 +16,10 @@ Esto lo conseguimos gracias a selegcionar uno de los ejes de manera aleatoria.
 
 Para ello utilizamos el componente **Transform**, que es el encargado de almacenar la información de posición, rotación y escala de cualquier objeto en Unity. En el método **Start()**, se accede a la propiedad **.position** del Transform mediante **GetComponent<Transform>()** y se guarda en un **Vector3**. el script muestra el evctor de coordenadas de la esfera por consola.
 
+**Distancia entre Cubo, Esfera y Cilindro**
+
+Este script se encarga de calcular y mostrar en consola la distancia entre una esfera y otros objetos de la escena, en este caso un cilindro y un cubo. Para localizar cada objeto dentro de Unity se utilizan etiquetas **tags**, y mediante **GameObject.FindWithTag()** se asignan a las variables correspondientes. 
+
+Luego, en el método **Start()**, se obtiene la posición de cada objeto a través de su componente **Transform** y se guardan en vectores. Con la función **Vector3.Distance()**, el script calcula la distancia en el espacio 3D entre la esfera y el cilindro, así como entre la esfera y el cubo.
+
 
