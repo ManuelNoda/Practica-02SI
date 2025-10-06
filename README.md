@@ -42,3 +42,11 @@ Primero, para crear el disparador, abrimos el **Input Manager**  (Edit,Project S
 Esto le dice a Unity que cada vez que se presione H, el input "Disparador" se activará.
 
 Dentro del método **Update()**, que se ejecuta una vez por frame, usamos **Input.GetButtonDown("Disparador")** para detectar cuándo se presiona la tecla asignada. Esto nos permite ejecutar acciones exactamente en el frame en que se pulsa la tecla, sin repetir la acción mientras se mantiene presionada.
+
+**Movimiento de un Cubo**
+
+Definimos una variable pública movimeinto usando un **Vector3**, que indica la dirección del movimiento respecto a los ejes (en este caso por defecto **Vector3.right**, es decir, hacia la derecha). También definimos speed, que nos permite ajustar la velocidad del movimiento desde el inspector.En el método **Start()**, que se ejecuta al iniciar la escena, creamos una variable auxiliar **position_aux** con la posición inicial del cubo. 
+
+Luego, fijamos la coordenada y en 0 para asegurarnos de que el cubo siempre se mantenga sobre el plano horizontal, y asignamos esa posición de vuelta al transform del cubo.
+
+Dentro del método **Update()**, que se ejecuta una vez por frame, usamos **transform.Translate()** para mover el cubo en la dirección definida por movimeinto, multiplicada por la velocidad y por **Time.deltaTime.** Esto asegura que el movimiento sea suave y consistente, independientemente de los frames por segundo. El parámetro **Space.World** indica que el movimiento se hace respecto al mundo y no a la orientación local del objeto.
