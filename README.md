@@ -22,4 +22,9 @@ Este script se encarga de calcular y mostrar en consola la distancia entre una e
 
 Luego, en el método **Start()**, se obtiene la posición de cada objeto a través de su componente **Transform** y se guardan en vectores. Con la función **Vector3.Distance()**, el script calcula la distancia en el espacio 3D entre la esfera y el cilindro, así como entre la esfera y el cubo.
 
+**Movimiento con Marcadores**
 
+Este conjunto de scripts permite mover un objeto en Unity a distintas posiciones predefinidas cuando se mantiene presionada la barra espaciadora. 
+El script **Marcador** funciona como un contenedor de tres **Vector3** llamados desplazamiento1, desplazamiento2 y desplazamiento3, que representan diferentes posiciones relativas respecto a la original. 
+
+Por otro lado, el script Movermarcador hace referencia a este Marcador y utiliza una variable indice para elegir cuál de los tres desplazamientos aplicar. Al iniciar el juego, se guarda la posición original del objeto, y en cada actualización **(Update())** se detecta si la tecla espacio está presionada usando **Input.GetKey()**. Si lo está, el objeto se mueve sumando a su posición original el desplazamiento correspondiente según el índice. En cambio, si se suelta la tecla, el objeto regresa automáticamente a su posición inicial.
