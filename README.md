@@ -50,3 +50,11 @@ Definimos una variable pública movimeinto usando un **Vector3**, que indica la 
 Luego, fijamos la coordenada y en 0 para asegurarnos de que el cubo siempre se mantenga sobre el plano horizontal, y asignamos esa posición de vuelta al transform del cubo.
 
 Dentro del método **Update()**, que se ejecuta una vez por frame, usamos **transform.Translate()** para mover el cubo en la dirección definida por movimeinto, multiplicada por la velocidad y por **Time.deltaTime.** Esto asegura que el movimiento sea suave y consistente, independientemente de los frames por segundo. El parámetro **Space.World** indica que el movimiento se hace respecto al mundo y no a la orientación local del objeto.
+
+**Movimiento del Cubo con WASD**
+
+Usamos las teclas W, A, S y D para controlar el desplazamiento en los ejes horizontal y vertical. Primero definimos las variables **movHorizontal** y **movVertical**, que almacenan la dirección del movimiento en cada eje, y speed, que determina qué tan rápido se moverá el objeto.
+
+Dentro del método **Update()**, que se ejecuta una vez por frame, el script comprueba si se presionan las teclas correspondientes usando **Input.GetKey()**. Si se presiona la tecla A, el valor del eje horizontal se establece en -1, indicando movimiento hacia la izquierda; si se presiona D, se establece en 1, indicando movimiento hacia la derecha. De manera similar con W (movimiento hacia adelante y S (movimiento hacia atrás).
+
+Después, se crea un **Vector3** llamado movimiento que combina estos valores en los ejes X y Z, dejando Y en 0 para que el objeto no se mueva verticalmente. Este vector se multiplica por **speed** y por **Time.deltaTime** dentro de **transform.Translate()**, lo que asegura que el movimiento sea suave y consistente, sin depender de la cantidad de frames por segundo. Se usa **Space.World** para que el desplazamiento se haga respecto al mundo y no a la orientación local del objeto.
