@@ -35,3 +35,10 @@ Lo que hace es detectar la presión de las flechas del teclado y calcular la vel
 Dentro del método **Update()**, obtenemos los valores de los ejes de movimiento usando **Input.GetAxisRaw("Vertical")** y **Input.GetAxisRaw("Horizontal")**. Estos valores devuelven -1, 0 o 1 dependiendo de si se presiona la flecha correspondiente, y nos permiten calcular el desplazamiento del objeto sin suavizado.
 
 Después, comprobamos si se presionan las teclas específicas de flecha con **Input.GetKeyDown()**. Si se presiona la flecha arriba o abajo, multiplicamos velocidad por el eje vertical (ejeVertical) y mostramos el resultado en la consola. Si se presiona la flecha izquierda o derecha, hacemos lo mismo pero usando el eje horizontal (ejeHorizontal).
+
+**Disparador letra H**
+
+Primero, para crear el disparador, abrimos el **Input Manager**  (Edit,Project Settings,Input Manager) y añadimos un nuevo Input llamado **"Disparador"**, asignándole la tecla **H** como botón. 
+Esto le dice a Unity que cada vez que se presione H, el input "Disparador" se activará.
+
+Dentro del método **Update()**, que se ejecuta una vez por frame, usamos **Input.GetButtonDown("Disparador")** para detectar cuándo se presiona la tecla asignada. Esto nos permite ejecutar acciones exactamente en el frame en que se pulsa la tecla, sin repetir la acción mientras se mantiene presionada.
