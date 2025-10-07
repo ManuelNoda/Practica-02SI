@@ -58,3 +58,13 @@ Usamos las teclas W, A, S y D para controlar el desplazamiento en los ejes horiz
 Dentro del método **Update()**, que se ejecuta una vez por frame, el script comprueba si se presionan las teclas correspondientes usando **Input.GetKey()**. Si se presiona la tecla A, el valor del eje horizontal se establece en -1, indicando movimiento hacia la izquierda; si se presiona D, se establece en 1, indicando movimiento hacia la derecha. De manera similar con W (movimiento hacia adelante y S (movimiento hacia atrás).
 
 Después, se crea un **Vector3** llamado movimiento que combina estos valores en los ejes X y Z, dejando Y en 0 para que el objeto no se mueva verticalmente. Este vector se multiplica por **speed** y por **Time.deltaTime** dentro de **transform.Translate()**, lo que asegura que el movimiento sea suave y consistente, sin depender de la cantidad de frames por segundo. Se usa **Space.World** para que el desplazamiento se haga respecto al mundo y no a la orientación local del objeto.
+
+**Movimiento del Cubo hacia la Esfera**
+
+Este script lo que hace es adaptar el movimiento de un cubo para que se desplace hacia la posición de una esfera, sin importar qué tan lejos o cerca estén los dos objetos. Primero declaramos una variable pública **esfera** de tipo **Transform**, que sirve para indicar el objeto al que el cubo debe dirigirse, y la variable **speed** que controla la velocidad de avance.
+
+Dentro del método **Update()**, lo primero que hace el script es comprobar si la esfera está asignada; si no lo está, el código se detiene con return. Luego usamos **transform.LookAt(esfera)** para que el cubo siempre mire en dirección a la esfera.
+
+Después, calculamos un vector direccion restando la posición del cubo a la posición de la esfera **(esfera.position - transform.position)**. Para que el cubo no cambie de altura, se fuerza el valor de direccion.y a 0. Posteriormente, normalizamos el vector **(direccion.normalized)** para que su magnitud siempre sea 1. Esto es importante porque asegura que la velocidad del cubo no dependa de la distancia entre los dos objetos, tal como pide el enunciado.
+
+Finalmente, el cubo se mueve en dirección a la esfera usando **transform.Translate()**, multiplicando el vector normalizado por la velocidad y por **Time.deltaTime**, garantizando un movimiento uniforme en cualquier situación. Usamos **Space.World** para que el desplazamiento sea en el espacio global y no en relación a la orientación del cubo.
