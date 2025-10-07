@@ -68,3 +68,10 @@ Dentro del método **Update()**, lo primero que hace el script es comprobar si l
 Después, calculamos un vector direccion restando la posición del cubo a la posición de la esfera **(esfera.position - transform.position)**. Para que el cubo no cambie de altura, se fuerza el valor de direccion.y a 0. Posteriormente, normalizamos el vector **(direccion.normalized)** para que su magnitud siempre sea 1. Esto es importante porque asegura que la velocidad del cubo no dependa de la distancia entre los dos objetos, tal como pide el enunciado.
 
 Finalmente, el cubo se mueve en dirección a la esfera usando **transform.Translate()**, multiplicando el vector normalizado por la velocidad y por **Time.deltaTime**, garantizando un movimiento uniforme en cualquier situación. Usamos **Space.World** para que el desplazamiento sea en el espacio global y no en relación a la orientación del cubo.
+
+
+**Movimiento del Cubo hacia alante**
+
+Movemos el cubo de un  Unity hacia adelante constantemente, mientras permite girarlo a izquierda o derecha con las teclas de movimiento horizontal. Primero declaramos dos variables **velocidad**, que controla qué tan rápido avanza el objeto, y **velocidadGiro**, que define qué tan rápido gira sobre su propio eje Y. Dentro del método **Update()**, en cada frame, obtenemos el valor del eje horizontal con **Input.GetAxis("Horizontal")**, ese valor se multiplica por la velocidad de giro y por **Time.deltaTime**, y se aplica en **transform.Rotate()**, haciendo que el objeto pueda rotar suavemente hacia los lados.
+
+Después, el objeto se mueve siempre hacia adelante en la dirección en la que está mirando, gracias a **transform.forward * velocidad * Time.deltaTime**, lo que garantiza un desplazamiento continuo e independiente de los frames por segundo.
